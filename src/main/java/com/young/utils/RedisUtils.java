@@ -3,9 +3,7 @@ package com.young.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 // 在我们真实的分发中，或者你们在公司，一般都可以看到一个公司自己封装RedisUtil
 @Component
-public final class RedisUtil {
+public class RedisUtils {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;

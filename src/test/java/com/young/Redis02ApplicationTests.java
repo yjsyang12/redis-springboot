@@ -1,8 +1,9 @@
 package com.young;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.young.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;
@@ -10,16 +11,22 @@ import javax.annotation.Resource;
 @SpringBootTest
 class Redis02ApplicationTests {
 
-    @Resource
+    @Resource(name = "myRedisTemplate")
     private RedisTemplate redisTemplate;
+
+    @Resource
+    private ObjectMapper objectMapper;
 
     @Test
     void contextLoads() {
 //        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
 //        connection.flushDb();
+        User user = new User();
+        user.setName("young");
+        user.setAge(24);
 
-        redisTemplate.opsForValue().set("name","young");
-        System.out.println(redisTemplate.opsForValue().get("name"));
+        redisTemplate.opsForValue().set("user", user);
+        System.out.println(redisTemplate.opsForValue().get("user"));
     }
 
 }

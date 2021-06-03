@@ -29,4 +29,10 @@ class Redis02ApplicationTests {
         System.out.println(redisTemplate.opsForValue().get("user"));
     }
 
+    @Test
+    void calTest() {
+        int a = 10;
+        System.out.println(a >> 2);
+    }
+
 }
